@@ -10,6 +10,7 @@ const boxes = document.querySelector('div#boxes');
 
 function createBoxes(amount) {
   boxes.innerHTML = '';
+  const fragment = document.createDocumentFragment();
 
   for (let i = 0; i < amount; i++) {
     const box = document.createElement('div');
@@ -17,8 +18,10 @@ function createBoxes(amount) {
     box.style.height = `${30 + i * 10}px`;
     box.style.margin = '5px';
     box.style.backgroundColor = getRandomHexColor();
-    boxes.append(box);
+    fragment.append(box);
   }
+
+  boxes.append(fragment);
 }
 
 function destroyBoxes() {
